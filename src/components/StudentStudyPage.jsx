@@ -5,7 +5,7 @@ import StudentNavbar from './StudentNavbar';
 export default function StudentStudyPage() {
   const [activeTab, setActiveTab] = useState('study');
   const [notificationCount] = useState(3);
-  const studentName = "Alex Johnson";
+  const studentName = "Pritam Bhunia";
 
   const navItems = [
     { id: 'study', label: 'Study', icon: BookOpen },
@@ -121,7 +121,7 @@ export default function StudentStudyPage() {
                 <p className="text-purple-100 text-lg">Ready to continue your learning journey today?</p>
               </div>
               <div className="hidden md:block">
-                <div className="bg-white bg-opacity-20 p-6 rounded-2xl backdrop-blur-sm">
+                <div className="bg-purple bg-opacity-20 p-6 rounded-2xl backdrop-blur-sm">
                   <GraduationCap size={80} className="text-white" />
                 </div>
               </div>
@@ -213,8 +213,8 @@ export default function StudentStudyPage() {
                 <div>
                   <h3 className="font-bold text-gray-800 mb-1">Customer Care</h3>
                   <p className="text-sm text-gray-600 mb-2">Direct support line</p>
-                  <a href="tel:+91-9876543210" className="text-green-600 font-semibold hover:text-green-700">
-                    +91-9876543210
+                  <a href="tel:+91-7908673050" className="text-green-600 font-semibold hover:text-green-700">
+                    +91-7908673050
                   </a>
                 </div>
               </div>

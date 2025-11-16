@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GraduationCap, User, Lock, Eye, EyeOff, BookOpen, Award, ArrowRight, Briefcase, Users } from 'lucide-react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const FloatingIcon = ({ children, delay, duration, x, y }) => (
   <div
@@ -16,6 +16,7 @@ const FloatingIcon = ({ children, delay, duration, x, y }) => (
 );
 
 export default function InstructorLogin() {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     instructorId: '',
@@ -29,13 +30,31 @@ export default function InstructorLogin() {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
     if (!formData.instructorId || !formData.password) {
       alert('Please fill in all fields');
       return;
     }
-    console.log('Login submitted:', formData);
-    alert('Login successful!');
+
+    const response = await fetch(`${backendUrl}/inslogin`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({ teacherId: formData.instructorId, password: formData.password })
+    })
+
+    const data = await response.json().catch(() => ({}));
+
+    if(response.ok){
+      const instructor = data.instructor || {};
+      // store for InstructorPage.jsx
+      localStorage.setItem('instructor', JSON.stringify(instructor));
+      localStorage.setItem('teacherId', instructor.teacherId || formData.instructorId);
+      navigate(`/${localStorage.getItem('teacherId')}/insthome`);
+    }
+    else{
+      alert(data.message || 'Login failed');
+    }
   };
 
   return (

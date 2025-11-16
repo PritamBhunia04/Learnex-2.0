@@ -1,5 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { BookOpen, GraduationCap, Sparkles, Award, Users, TrendingUp, ChevronRight, Play, CheckCircle } from 'lucide-react';
+import {
+  BookOpen,
+  GraduationCap,
+  Sparkles,
+  Award,
+  Users,
+  TrendingUp,
+  ChevronRight,
+  Play,
+  CheckCircle,
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  Youtube,
+  Heart
+} from 'lucide-react';
 import LearnexNavbar from './LearnexNavbar';
 
 const FloatingIcon = ({ children, delay, duration, x, y }) => (
@@ -86,8 +105,7 @@ export default function LearnexLanding() {
       </div>
 
       {/* Navigation */}
-      <LearnexNavbar/>
-      
+      <LearnexNavbar />
 
       {/* Hero Section */}
       <section className="relative z-10 px-6 py-20 max-w-7xl mx-auto">
@@ -174,55 +192,122 @@ export default function LearnexLanding() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="relative z-10 px-6 py-20 bg-white bg-opacity-50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 animate-fadeInUp">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Why Choose <span className="text-purple-600">Learnex?</span>
-            </h2>
-            <p className="text-xl text-gray-600">Everything you need to succeed in your learning journey</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { icon: BookOpen, title: 'Expert Content', desc: 'Learn from industry professionals with real-world experience' },
-              { icon: Users, title: 'Community Support', desc: 'Connect with fellow learners and grow together' },
-              { icon: Award, title: 'Certificates', desc: 'Earn recognized certificates to boost your career' },
-              { icon: Sparkles, title: 'Interactive Learning', desc: 'Engage with hands-on projects and quizzes' },
-              { icon: TrendingUp, title: 'Track Progress', desc: 'Monitor your growth with detailed analytics' },
-              { icon: GraduationCap, title: 'Flexible Learning', desc: 'Study at your own pace, anytime, anywhere' }
-            ].map((feature, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 animate-fadeInUp" style={{ animationDelay: `${i * 0.1}s` }}>
-                <div className="bg-gradient-to-br from-purple-500 to-purple-700 w-14 h-14 rounded-xl flex items-center justify-center mb-4">
-                  <feature.icon className="text-white" size={28} />
+      {/* Footer */}
+      <footer className="relative z-10 bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 text-white">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            {/* Brand Section */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <div className="bg-purple-700 bg-opacity-20 p-2 rounded-xl backdrop-blur-sm">
+                  <GraduationCap className="text-purple-300" size={40} />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.desc}</p>
+                <span className="text-2xl font-bold">Learnex</span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="relative z-10 px-6 py-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-gradient-to-r from-purple-600 to-purple-800 rounded-3xl p-12 shadow-2xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-white opacity-10 shimmer"></div>
-            <div className="relative z-10">
-              <h2 className="text-4xl font-bold text-white mb-4 animate-fadeInUp">
-                Ready to Start Your Journey?
-              </h2>
-              <p className="text-xl text-purple-100 mb-8 animate-fadeInUp delay-100">
-                Join 50,000+ learners already transforming their careers with Learnex
+              <p className="text-purple-200 leading-relaxed">
+                Empowering learners worldwide with quality education and innovative learning experiences.
               </p>
-              <button className="bg-white text-purple-600 px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 animate-fadeInUp delay-200">
-                Get Started Today - It's Free!
-              </button>
+              <div className="flex gap-3">
+                {[
+                  { icon: Facebook, href: '#', color: 'text-blue-500' },
+                  { icon: Twitter, href: '#', color: 'text-sky-400' },
+                  { icon: Instagram, href: '#', color: 'text-pink-500' },
+                  { icon: Linkedin, href: '#', color: 'text-blue-600' },
+                  { icon: Youtube, href: '#', color: 'text-red-500' }
+                ].map((social, i) => {
+                  const Icon = social.icon;
+                  return (
+                    <a
+                      key={i}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-white bg-opacity-20 p-2 rounded-lg hover:bg-opacity-30 transition-all duration-300 hover:scale-110"
+                    >
+                      <Icon size={20} className={`${social.color}`} />
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-lg font-bold mb-4">Quick Links</h3>
+              <ul className="space-y-3">
+                {['About Us', 'Courses', 'Instructors', 'Success Stories', 'Blog', 'Careers'].map((link, i) => (
+                  <li key={i}>
+                    <a href="#" className="text-purple-200 hover:text-white transition-colors flex items-center gap-2 group">
+                      <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                      {link}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Support */}
+            <div>
+              <h3 className="text-lg font-bold mb-4">Support</h3>
+              <ul className="space-y-3">
+                {['Help Center', 'Contact Us', 'FAQs', 'Terms of Service', 'Privacy Policy', 'Refund Policy'].map((link, i) => (
+                  <li key={i}>
+                    <a href="#" className="text-purple-200 hover:text-white transition-colors flex items-center gap-2 group">
+                      <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                      {link}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h3 className="text-lg font-bold mb-4">Get in Touch</h3>
+              <ul className="space-y-4">
+                <li className="flex items-start gap-3">
+                  <Mail className="text-purple-300 flex-shrink-0 mt-1" size={20} />
+                  <div>
+                    <p className="text-purple-200 text-sm">Email</p>
+                    <a href="mailto:support@learnex.com" className="text-white hover:text-purple-200 transition-colors">
+                      support@learnex.com
+                    </a>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Phone className="text-purple-300 flex-shrink-0 mt-1" size={20} />
+                  <div>
+                    <p className="text-purple-200 text-sm">Phone</p>
+                    <a href="tel:+91-7908673050" className="text-white hover:text-purple-200 transition-colors">
+                      +91-7908673050
+                    </a>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <MapPin className="text-purple-300 flex-shrink-0 mt-1" size={20} />
+                  <div>
+                    <p className="text-purple-200 text-sm">Address</p>
+                    <p className="text-white">
+                      Salt Lake Sector 4, Bidhannagar<br />
+                      Kolkata-700098
+                    </p>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-purple-700 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-purple-200 text-sm">
+              © 2025 Learnex. All rights reserved.
+            </p>
+            <p className="text-purple-200 text-sm flex items-center gap-2">
+              Made with <Heart className="text-red-400 fill-red-400" size={16} /> for learners worldwide
+            </p>
+          </div>
         </div>
-      </section>
+      </footer>
     </div>
   );
 }

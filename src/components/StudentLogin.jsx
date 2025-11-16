@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GraduationCap, Mail, Lock, Eye, EyeOff, Sparkles, BookOpen, Award, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
 
 const FloatingIcon = ({ children, delay, duration, x, y }) => (
   <div
@@ -16,6 +16,8 @@ const FloatingIcon = ({ children, delay, duration, x, y }) => (
 );
 
 export default function StudentLogin() {
+  const navigate = useNavigate()
+
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     studentEmail: '',
@@ -29,13 +31,30 @@ export default function StudentLogin() {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
     if (!formData.studentEmail || !formData.password) {
       alert('Please fill in all fields');
       return;
     }
     console.log('Login submitted:', formData);
-    alert('Login successful!');
+
+    const response = await fetch(`${backendUrl}/stdlogin`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify(formData)
+    })
+
+    const data = await response.json().catch(() => ({}));
+
+    if(response.ok){
+      localStorage.setItem("userEmail", formData.studentEmail)
+      navigate(`/${localStorage.getItem("userEmail")}/study`)
+    }
+    else{
+      alert(data.message || 'Signup failed');
+    }
+    
   };
 
   return (

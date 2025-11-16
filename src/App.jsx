@@ -6,6 +6,13 @@ import StudentSignup from './components/StudentSignup';
 import StudentLogin from './components/StudentLogin';
 import InstructorLogin from './components/InstructorLogin';
 import StudentStudyPage from './components/StudentStudyPage'
+import ProtectedRoutes from './components/ProtectedRoutes';
+import CoursePage from './components/CoursePage';
+import DoubtBoxPage from './components/DoubtBoxPage';
+import ScholarshipPage from './components/ScholarshipPage';
+import NotificationPage from './components/NotificationPage';
+import CourseDetailsPage from './components/CourseDetailsPage';
+import InstructorPage from './components/InstructorPage'
 
 function App() {
 
@@ -20,7 +27,7 @@ function App() {
           path="/"
           element={
             localStorage.getItem("userEmail")
-              ? <Navigate to={`/${localStorage.getItem("userEmail")}/home`} />
+              ? <Navigate to={`/${localStorage.getItem("userEmail")}/study`} />
               : <LearnexLanding/>
           }
         />
@@ -29,7 +36,50 @@ function App() {
         <Route path="/stdlogin" element={<StudentLogin />} />
         <Route path="/inslogin" element={<InstructorLogin />} />
 
-        <Route path=":name/study" element={<StudentStudyPage />} />
+
+          <Route path="/:name/study" element={
+            <ProtectedRoutes>
+              <StudentStudyPage />
+            </ProtectedRoutes>
+            } />
+
+
+          <Route path="/:name/courses" element={
+            <ProtectedRoutes>
+              <CoursePage />
+            </ProtectedRoutes>
+            } />
+
+          <Route path="/:name/courses/details" element={
+            <ProtectedRoutes>
+              <CourseDetailsPage />
+            </ProtectedRoutes>
+            } />
+
+
+          <Route path="/:name/doubts" element={
+            <ProtectedRoutes>
+              <DoubtBoxPage />
+            </ProtectedRoutes>
+            } />
+
+
+          <Route path="/:name/scholarship" element={
+            <ProtectedRoutes>
+              <ScholarshipPage />
+            </ProtectedRoutes>
+            } />
+
+
+          <Route path="/:name/notifications" element={
+            <ProtectedRoutes>
+              <NotificationPage />
+            </ProtectedRoutes>
+            } />
+
+          <Route path="/:id/insthome" element={
+              <InstructorPage />
+            } />
 e
 
         </Routes>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GraduationCap, User, Mail, Phone, BookOpen, Lock, Eye, EyeOff, Sparkles } from 'lucide-react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const FloatingIcon = ({ children, delay, duration, x, y }) => (
   <div
@@ -16,6 +16,8 @@ const FloatingIcon = ({ children, delay, duration, x, y }) => (
 );
 
 export default function StudentSignup() {
+  const navigate = useNavigate()
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -35,14 +37,48 @@ export default function StudentSignup() {
     });
   };
 
-  const handleSubmit = (e) => {
+ /*
+ 
+ [
+  {
+  name: Pritam,
+  age: 21,
+  },
+
+  {
+  name: Aditya,
+  age: 22
+  }, {}, {}
+ ]
+
+ */ 
+
+  const handleSubmit = async (e) => {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    console.log(backendUrl)
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       alert('Passwords do not match!');
       return;
     }
     console.log('Form submitted:', formData);
-    alert('Account created successfully!');
+
+    const response = await fetch(`${backendUrl}/stdsignup`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify(formData)
+    })
+
+    const data = await response.json().catch(() => ({}));
+
+    if(response.ok){
+      
+      alert('Account created successfully!');
+      navigate("/stdlogin")
+    }
+    else{
+      alert(data.message || 'Signup failed');
+    }
   };
 
   return (
