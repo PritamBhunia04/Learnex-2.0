@@ -97,7 +97,7 @@ export default function DoubtBoxPage() {
       setError('');
       const params = new URLSearchParams();
       // Optionally send filters to server; keeping client-side filtering by default
-      const res = await fetch(`http://localhost:3000/doubts?${params.toString()}`);
+      const res = await fetch(`https://learnex-2-0-175dcnjkr-pritam-bhunias-projects.vercel.app/doubts?${params.toString()}`);
       const data = await res.json();
       setDoubts(Array.isArray(data) ? data : []);
     } catch (e) {
