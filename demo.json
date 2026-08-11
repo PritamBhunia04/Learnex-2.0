@@ -1,0 +1,72 @@
+[
+{
+  "title": "Confusion in React State Management",
+  "description": "Can someone explain the difference between useState and useReducer? Getting confused in my project.",
+  "course": "React Frontend Development",
+  "tags": ["react", "state-management"],
+  "authorEmail": "student1@example.com",
+  "status": "pending",
+  "upvotes": 0,
+  "views": 0,
+  "replies": 0,
+  "createdAt": { "$date": "2025-11-16T07:00:00.159Z" },
+  "updatedAt": { "$date": "2025-11-16T07:00:00.159Z" }
+},
+
+{
+  "title": "Doubt in Merge Sort Time Complexity",
+  "description": "Is merge sort always O(n log n)? Or does it change in some cases?",
+  "course": "Data Structures & Algorithms",
+  "tags": ["algorithm", "sorting"],
+  "authorEmail": "student2@example.com",
+  "status": "in-discussion",
+  "upvotes": 3,
+  "views": 12,
+  "replies": 1,
+  "createdAt": { "$date": "2025-11-16T07:10:10.159Z" },
+  "updatedAt": { "$date": "2025-11-16T07:12:45.159Z" }
+},
+
+{
+  "title": "Error while connecting MongoDB Atlas",
+  "description": "Getting timeout error when connecting from my backend. Using Express + Mongoose.",
+  "course": "Backend Development with Node.js",
+  "tags": ["mongodb", "mongoose", "backend"],
+  "authorEmail": "student3@example.com",
+  "status": "resolved",
+  "upvotes": 5,
+  "views": 40,
+  "replies": 3,
+  "createdAt": { "$date": "2025-11-16T07:20:05.159Z" },
+  "updatedAt": { "$date": "2025-11-16T07:40:30.159Z" }
+},
+
+
+{
+  "title": "How to deploy a Flask app for free?",
+  "description": "Looking for free hosting options for my small Flask project.",
+  "course": "Python & Flask Web Development",
+  "tags": ["flask", "deployment"],
+  "authorEmail": "student4@example.com",
+  "status": "pending",
+  "upvotes": 1,
+  "views": 5,
+  "replies": 0,
+  "createdAt": { "$date": "2025-11-16T07:25:12.159Z" },
+  "updatedAt": { "$date": "2025-11-16T07:25:12.159Z" }
+},
+
+{
+  "title": "Confused in CSS Flex vs Grid",
+  "description": "When should I use flexbox and when should I use grid? Any simple rule?",
+  "course": "Web Development Bootcamp",
+  "tags": ["css", "flex", "grid"],
+  "authorEmail": "student5@example.com",
+  "status": "in-discussion",
+  "upvotes": 2,
+  "views": 18,
+  "replies": 2,
+  "createdAt": { "$date": "2025-11-16T07:45:00.159Z" },
+  "updatedAt": { "$date": "2025-11-16T07:50:45.159Z" }
+}
+]
