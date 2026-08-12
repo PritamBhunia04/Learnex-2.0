@@ -27,13 +27,8 @@ app.use(express.json());
 
 const corsOptions = {
     origin: [
-        // Local development
         'http://localhost:5173',
-
-        // Vercel frontend
         'https://learnex-2-0.vercel.app',
-
-        // Render frontend
         'https://learnex-frontend.onrender.com'
     ],
 
@@ -55,6 +50,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.options(/.*/, cors(corsOptions));
 
 
 // =====================================================
